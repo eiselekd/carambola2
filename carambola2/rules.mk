@@ -16,6 +16,9 @@ include $(TOPDIR)/include/verbose.mk
 
 export TMP_DIR:=$(TOPDIR)/tmp
 
+export SOURCE_DATE_EPOCH:=$(shell date +%s)
+
+
 qstrip=$(strip $(subst ",,$(1)))
 #"))
 
