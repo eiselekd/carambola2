@@ -1,6 +1,23 @@
-all: carambola
+all: carambola-prepare carambola-compile
 
-carambola:
+CONFIG?=config_minimal
+
+carambola-prepare:
+	cd carambola2; \
+	./scripts/feeds update -a; \
+	./scripts/feeds install -a; \
+	cp .config .config_save`date +%F_%T.%N`; \
+	cp $(CONFIG) .config; make defconfig
+
+carambola-menuconfig:
+	cd carambola2; \
+	make menuconfig
+
+carambola-compile:
+	make -j4 IGNORE_ERRORS=m
+	ls -la carambola2/bin/ar71xx/openwrt-ar71xx-generic-carambola2-squashfs-sysupgrade.bin
+
+carambola-standard:
 	cd carambola2; \
 	./build.sh carambola2
 
