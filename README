@@ -1,5 +1,5 @@
 
 
-   scp <ip>:carambola2/bin/ar71xx/openwrt-ar71xx-generic-carambola2-squashfs-sysupgrade.bin /tmp
-   sysupgrade -v -n /tmp/openwrt-ar71xx-generic-carambola2-squashfs-sysupgrade.bin
+   scp /carambola2/bin/ar71xx/openwrt-8devices-v2.9-ar71xx-generic-carambola2-squashfs-sysupgrade.bin <ip>:/tmp
+   sysupgrade -v -n /tmp/openwrt-8devices-v2.9-ar71xx-generic-carambola2-squashfs-sysupgrade.bin
 
