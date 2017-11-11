@@ -23,7 +23,7 @@ endef
 define Build/Compile
 endef
 
-define Package/Pandora/install
+define Package/aosvpn/install
 	cp -r ./files/* $(1)/
 endef
 
