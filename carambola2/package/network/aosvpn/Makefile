@@ -14,6 +14,7 @@ define Package/aosvpn
   TITLE:=AOS VPN
   DEPENDS:=+socat +pptpd +python +tcpdump
   URL:=http://nodo/
+  MENU:=1
 endef
 
 define Package/aosvpn/description

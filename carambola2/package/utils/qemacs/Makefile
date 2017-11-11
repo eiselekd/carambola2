@@ -5,14 +5,20 @@ PKG_VERSION:=1.0.0
 PKG_RELEASE:=1
 PKG_MAINTAINER:=bellard
 
+PKG_LICENSE:=LGPL-2.1
+PKG_LICENSE_FILES:=COPYING
+
+PKG_BUILD_PARALLEL:=0
+
 include $(INCLUDE_DIR)/package.mk
 
 define Package/qemacs
-  SECTION:=base
-  CATEGORY:=Base system
+  SECTION:=utils
+  CATEGORY:=Utilities
   TITLE:=QEmacs
   DEPENDS:=
   URL:=http://bellard.org/
+  MENU:=1
 endef
 
 define Package/qemacs/description
@@ -21,14 +27,14 @@ endef
 
 define Build/Prepare
 	@echo "-------- prepare qemacs -------------"
-	mkdir -p $(PKG_BUILD_DIR)
+	mkdir -p $(PKG_BUILD_DIR)/
 	$(CP) ./qemacs-0.3.3/* $(PKG_BUILD_DIR)/
 endef
 
 define Build/Configure
 	@echo "-------- configure qemacs -------------"
-	(cd $(PKG_BUILD_DIR); \
-		./configure --enable-tiny)
+	(cd $(PKG_BUILD_DIR)/; \
+		./configure --enable-tiny --prefix=/usr/ )
 endef
 
 define Build/Compile
@@ -36,10 +42,7 @@ define Build/Compile
 	$(call Build/Compile/Default, \
 		DESTDIR="$(PKG_INSTALL_DIR)" \
 		CC="$(TARGET_CC)" \
-		qe
-	+$(MAKE) -i $(PKG_JOBS) -C $(PKG_BUILD_DIR) \
-		DESTDIR="$(PKG_INSTALL_DIR)" \
-		install)
+		qe)
 endef
 
 

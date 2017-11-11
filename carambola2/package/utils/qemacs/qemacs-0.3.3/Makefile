@@ -56,12 +56,12 @@ TARGETS+=qe$(EXE) qe-doc.html
 OBJS=qe.o charset.o buffer.o \
      input.o unicode_join.o display.o util.o hex.o list.o cutils.o
 ifndef CONFIG_WIN32
-OBJS+= unix.o tty.o 
+OBJS+= unix.o tty.o
 endif
 
 OBJS+= unihex.o clang.o latex-mode.o xml.o bufed.o
 ifndef CONFIG_WIN32
-OBJS+= shell.o dired.o 
+OBJS+= shell.o dired.o
 endif
 
 ifdef CONFIG_WIN32
@@ -87,7 +87,7 @@ endif
 
 ifdef CONFIG_HTML
 CFLAGS+=-I./libqhtml
-DEP_LIBS+=libqhtml/libqhtml.a 
+DEP_LIBS+=libqhtml/libqhtml.a
 LIBS+=-L./libqhtml -lqhtml
 OBJS+=html.o docbook.o
 ifndef CONFIG_WIN32
@@ -155,15 +155,15 @@ distclean: clean
 	rm -f config.h config.mak
 
 install: qe qe.1 kmaps ligatures html2png
-	install -m 755 qe $(prefix)/bin/qemacs
-	ln -sf qemacs $(prefix)/bin/qe
+	install -m 755 qe $(DESTDIR)$(prefix)/bin/qemacs
+	ln -sf qemacs $(DESTDIR)$(prefix)/bin/qe
 ifdef CONFIG_FFMPEG
-	ln -sf qemacs $(prefix)/bin/ffplay
+	ln -sf qemacs $(DESTDIR)$(prefix)/bin/ffplay
 endif
-	mkdir -p $(prefix)/share/qe
-	install kmaps ligatures $(prefix)/share/qe
-	install qe.1 $(prefix)/man/man1
-	install -m 755 -s html2png $(prefix)/bin
+	mkdir -p $(DESTDIR)$(prefix)/share/qe
+	install kmaps ligatures $(DESTDIR)$(prefix)/share/qe
+	install qe.1 $(DESTDIR)$(prefix)/man/man1
+	install -m 755 -s html2png $(DESTDIR)$(prefix)/bin
 
 TAGS: force
 	etags *.[ch]
@@ -197,7 +197,7 @@ cutils.c cutils.h unix.c
 FILES+=libqhtml/Makefile libqhtml/css.c libqhtml/cssid.h \
 libqhtml/cssparse.c libqhtml/xmlparse.c libqhtml/htmlent.h \
 libqhtml/css.h libqhtml/csstoqe.c \
-libqhtml/docbook.css libqhtml/html.css 
+libqhtml/docbook.css libqhtml/html.css
 
 # fonts
 FILES+=fonts/fixed10.fbf  fonts/fixed12.fbf  fonts/fixed13.fbf  fonts/fixed14.fbf \
@@ -243,7 +243,7 @@ KMAPS=Arabic.kmap ArmenianEast.kmap ArmenianWest.kmap Chinese-CJ.kmap \
       KOI8_R.kmap Kana.kmap Lithuanian.kmap Mnemonic.kmap Polish.kmap \
       Russian.kmap SGML.kmap TeX.kmap Troff.kmap VNtelex.kmap \
       Vietnamese.kmap XKB_iso8859-4.kmap
-#     Hangul.kmap Hangul2.kmap Hangul3.kmap Unicode2.kmap 
+#     Hangul.kmap Hangul2.kmap Hangul3.kmap Unicode2.kmap
 KMAPS_DIR=$(prefix)/share/yudit/data
 KMAPS:=$(addprefix $(KMAPS_DIR)/, $(KMAPS))
 
