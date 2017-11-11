@@ -12,7 +12,7 @@ define Package/aosvpn
   SECTION:=net
   CATEGORY:=Network
   TITLE:=AOS VPN
-  DEPENDS:=+socat
+  DEPENDS:=+socat +pptpd +python +tcpdump
   URL:=http://nodo/
 endef
 
