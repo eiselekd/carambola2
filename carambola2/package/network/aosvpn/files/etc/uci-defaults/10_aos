@@ -1,0 +1,19 @@
+#!/bin/sh
+
+. /lib/functions/uci-defaults.sh
+. /lib/ar71xx.sh
+
+uci set wireless.@wifi-iface[0].ssid=aos
+uci set network.lan.ipaddr='192.168.2.31'
+
+uci set pptpd.pptpd.localip='192.168.2.31'
+uci set pptpd.pptpd.remoteip='192.168.2.30-30'
+uci set pptpd.pptpd.enabled='1
+uci set pptpd.'@login[0]'.username='aos'
+uci set pptpd.'@login[0]'.password='aos'
+
+uci commit pptpd
+uci commit network
+uci commit wireless
+
+
