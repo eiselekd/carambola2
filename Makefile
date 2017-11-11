@@ -15,13 +15,13 @@ carambola-menuconfig:
 
 carambola-compile-v:
 	cd carambola2; \
-	make V=s -j4 IGNORE_ERRORS=m
-	ls -la carambola2/bin/ar71xx/openwrt-ar71xx-generic-carambola2-squashfs-sysupgrade.bin
+	make V=s -j1 IGNORE_ERRORS=m
+	ls -la carambola2/bin/ar71xx/*-sysupgrade.bin | grep carambola2
 
 carambola-compile:
 	cd carambola2; \
 	make -j4 IGNORE_ERRORS=m
-	ls -la carambola2/bin/ar71xx/openwrt-ar71xx-generic-carambola2-squashfs-sysupgrade.bin
+	ls -la carambola2/bin/ar71xx/*-sysupgrade.bin | grep carambola2
 
 carambola-standard:
 	cd carambola2; \
