@@ -1,8 +1,16 @@
 #!/bin/sh
 
+. /lib/functions/uci-defaults.sh
+. /lib/ar71xx.sh
+
+cat <<EOF >/etc/config/firewall
+EOF
+
 cat <<EOF >> /etc/firewall.user
 iptables -F
 iptables -P INPUT ACCEPT
 iptables -P OUTPUT ACCEPT
 iptables -P FORWARD ACCEPT
 EOF
+
+uci commit firewall

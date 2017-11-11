@@ -3,7 +3,7 @@
 . /lib/functions/uci-defaults.sh
 . /lib/ar71xx.sh
 
-uci set system.'@system[0]'.hostname='aos'
+#uci set system.'@system[0]'.hostname='aos'
 uci set wireless.@wifi-iface[0].ssid=aos
 uci set network.lan.ipaddr='192.168.2.31'
 
