@@ -1,6 +1,6 @@
 all: carambola-prepare carambola-compile
 
-CONFIG?=config_minimal
+CONFIG?=config_minimal_vpn
 
 carambola-prepare:
 	cd carambola2; \
