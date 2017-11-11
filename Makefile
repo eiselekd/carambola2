@@ -13,9 +13,14 @@ carambola-menuconfig:
 	cd carambola2; \
 	make menuconfig
 
-carambola-compile:
+carambola-compile-v:
 	cd carambola2; \
 	make V=s -j4 IGNORE_ERRORS=m
+	ls -la carambola2/bin/ar71xx/openwrt-ar71xx-generic-carambola2-squashfs-sysupgrade.bin
+
+carambola-compile:
+	cd carambola2; \
+	make -j4 IGNORE_ERRORS=m
 	ls -la carambola2/bin/ar71xx/openwrt-ar71xx-generic-carambola2-squashfs-sysupgrade.bin
 
 carambola-standard:
