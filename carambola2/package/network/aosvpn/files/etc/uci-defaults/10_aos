@@ -3,6 +3,7 @@
 . /lib/functions/uci-defaults.sh
 . /lib/ar71xx.sh
 
+uci set system.'@system[0]'.hostname='aos'
 uci set wireless.@wifi-iface[0].ssid=aos
 uci set network.lan.ipaddr='192.168.2.31'
 
@@ -12,6 +13,12 @@ uci set pptpd.pptpd.enabled='1'
 uci set pptpd.'@login[0]'.username='aos'
 uci set pptpd.'@login[0]'.password='aos'
 
+mkdir -p /tmp/tftpboot
+chmod a+rwx /tmp/tftpboot
+uci set dhcp.'@dnsmasq[0]'.enable_tftp='1'
+uci set dhcp.'@dnsmasq[0]'.tftp_root='/tmp/tftpboot'
+
+uci commit dhcp
 uci commit pptpd
 uci commit network
 uci commit wireless
