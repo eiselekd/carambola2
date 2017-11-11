@@ -8,7 +8,7 @@ uci set network.lan.ipaddr='192.168.2.31'
 
 uci set pptpd.pptpd.localip='192.168.2.31'
 uci set pptpd.pptpd.remoteip='192.168.2.30-30'
-uci set pptpd.pptpd.enabled='1
+uci set pptpd.pptpd.enabled='1'
 uci set pptpd.'@login[0]'.username='aos'
 uci set pptpd.'@login[0]'.password='aos'
 
@@ -16,4 +16,6 @@ uci commit pptpd
 uci commit network
 uci commit wireless
 
-
+cat <<EOF >>/etc/ppp/chap-secrets
+aos	*	aos	*
+EOF
